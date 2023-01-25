@@ -90,69 +90,110 @@ void main() => runApp(MaterialApp(
 //   }
 // }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+// class MyApp extends StatefulWidget {
+//   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
 
-class _MyAppState extends State<MyApp> {
-  String text = '';
-  @override
-  void initState() {
+// class _MyAppState extends State<MyApp> {
+//   String text = '';
+//   @override
+//   void initState() {
     
-    text = 'Click on this button';
-    super.initState();
-  }
+//     text = 'Click on this button';
+//     super.initState();
+//   }
 
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         title: "My First App",
+//         theme: ThemeData(primarySwatch: Colors.blueGrey),
+//         home: Scaffold(
+//           appBar: AppBar(
+//             backgroundColor: Colors.blueGrey,
+//             title: const Text("My AppBar"),
+//             leading: const Icon(Icons.menu),
+//             actions: <Widget>[
+//               IconButton(
+//                 icon: const Icon(Icons.arrow_forward),
+//                 onPressed: () {
+//                   print('You pressed Arrow Button');
+//                   setState(() {
+//                     text = 'You pressed Arrow Button';
+//                   });
+          
+//                 },
+//               ),
+             
+//               new IconButton(
+//                   icon: const Icon(Icons.add),
+//                   onPressed: () {
+//                     print('You pressed Addition Button');
+//                     //new Text("You pressed Addition Button");
+//                     setState(() {
+//                       text = 'You pressed Addition Button';
+//                     });
+//                   }),
+             
+//               new IconButton(
+//                   icon: const Icon(Icons.close),
+//                   onPressed: () {
+//                     print('You pressed Close Button');
+//                     setState(() {
+//                       text = 'You pressed Close Button';
+//                     });
+//                   }),
+//             ],
+//           ),
+//           body: Text(text,
+//           style: TextStyle(
+//             fontSize: 32
+//           ),),
+//         ));
+//   }
+// }
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "My First App",
-        theme: ThemeData(primarySwatch: Colors.blueGrey),
-        home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.blueGrey,
-            title: const Text("My AppBar"),
-            leading: const Icon(Icons.menu),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.arrow_forward),
-                onPressed: () {
-                  print('You pressed Arrow Button');
-                  setState(() {
-                    text = 'You pressed Arrow Button';
-                  });
-          
-                },
-              ),
-             
-              new IconButton(
-                  icon: const Icon(Icons.add),
-                  onPressed: () {
-                    print('You pressed Addition Button');
-                    //new Text("You pressed Addition Button");
-                    setState(() {
-                      text = 'You pressed Addition Button';
-                    });
-                  }),
-             
-              new IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () {
-                    print('You pressed Close Button');
-                    setState(() {
-                      text = 'You pressed Close Button';
-                    });
-                  }),
-            ],
+    return new MaterialApp(
+      title: 'Stateless Widget',
+      home: Scaffold(
+        body: Container(
+          color: Colors.pink,
+          child: Container(
+            //color: Colors.yellow,
+            //3rd
+            width: double.infinity,  
+            height: 150.0, 
+            //1st 2nd
+            padding: EdgeInsets.all(35),
+            margin: EdgeInsets.all(20),
+            //4rth
+            alignment: Alignment.bottomLeft,  
+            transform: Matrix4.rotationZ(0.1),   
+            //1st
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 4),
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [ // 2nd
+                new BoxShadow(
+                  color: Colors.green,
+                  offset: new Offset(6.0, 6.0),
+                ),
+              ],
+            ),
+            child: Text(
+              "Child1",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
           ),
-          body: Text(text,
-          style: TextStyle(
-            fontSize: 32
-          ),),
-        ));
+        ),
+      ),
+    );
   }
 }
