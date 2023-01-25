@@ -198,51 +198,19 @@ void main() => runApp(MaterialApp(
 //   }
 // }
 
-// class MyApp extends StatelessWidget{
-//   @override
-//   Widget build(BuildContext context) {
-//     return  MaterialApp(
-//       title: "Row-Col Demo",
-//       home: Scaffold(
-        
-// body: Row(
-          
-// children: [
-            
-// Container(
-//               child: const Text('text 1'),
-//               padding: const EdgeInsets.all(10),
-//               margin: const EdgeInsets.all(40),
-//               color: Colors.green,
-//             ),
-
-//             Container(
-//               child: const Text('text 2'),
-//               padding: const EdgeInsets.all(10),
-//               margin: const EdgeInsets.all(40),
-//               color: Colors.lightGreen,
-//             ),
-
-//           ],
-//         ),
-//       ),
-     
-//     );
-//   }
-// }
-
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
       title: "Row-Col Demo",
       home: Scaffold(
-        body: Column(
-            //mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
-            // mainAxisSize: MainAxisSize.max,
-
-          children: <Widget>[
+        
+body: Row(
+          mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          //mainAxisSize: MainAxisSize.max,
+children: [
+            
             Container(
               child: const Text('text 1'),
               padding: const EdgeInsets.all(10),
@@ -256,11 +224,55 @@ class MyApp extends StatelessWidget{
               margin: const EdgeInsets.all(40),
               color: Colors.lightGreen,
             ),
+
           ],
         ),
       ),
      
     );
   }
-
 }
+
+// class MyApp extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context) {
+//     return  MaterialApp(
+//       title: "Row-Col Demo",
+//       home: Scaffold(
+//         body: Column(
+//             // mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+//             crossAxisAlignment: CrossAxisAlignment.stretch,
+//             // mainAxisSize: MainAxisSize.max,
+
+//           children: <Widget>[
+            
+//             Container(
+//               child: const Text('text 1'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.green,
+//             ),
+           
+
+
+//             Container(
+//               child: const Text('text 1'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.green,
+//             ),
+
+//             Container(
+//               child: const Text('text 2'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.lightGreen,
+//             ),
+//           ],
+//         ),
+//       ),
+     
+//     );
+//   }
+
+// }
