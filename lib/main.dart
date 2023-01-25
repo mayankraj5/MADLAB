@@ -157,43 +157,110 @@ void main() => runApp(MaterialApp(
 //   }
 // }
 
-class MyApp extends StatelessWidget {
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new MaterialApp(
+//       title: 'Stateless Widget',
+//       home: Scaffold(
+//         body: Container(
+//           color: Colors.pink,
+//           child: Container(
+//             //color: Colors.yellow,
+//             //3rd
+//             width: double.infinity,  
+//             height: 150.0, 
+//             //1st 2nd
+//             padding: EdgeInsets.all(35),
+//             margin: EdgeInsets.all(20),
+//             //4rth
+//             alignment: Alignment.bottomLeft,  
+//             transform: Matrix4.rotationZ(0.1),   
+//             //1st
+//             decoration: BoxDecoration(
+//               border: Border.all(color: Colors.black, width: 4),
+//               borderRadius: BorderRadius.circular(8),
+//               boxShadow: [ // 2nd
+//                 new BoxShadow(
+//                   color: Colors.green,
+//                   offset: new Offset(6.0, 6.0),
+//                 ),
+//               ],
+//             ),
+//             child: Text(
+//               "Child1",
+//               style: TextStyle(color: Colors.white, fontSize: 20),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class MyApp extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context) {
+//     return  MaterialApp(
+//       title: "Row-Col Demo",
+//       home: Scaffold(
+        
+// body: Row(
+          
+// children: [
+            
+// Container(
+//               child: const Text('text 1'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.green,
+//             ),
+
+//             Container(
+//               child: const Text('text 2'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.lightGreen,
+//             ),
+
+//           ],
+//         ),
+//       ),
+     
+//     );
+//   }
+// }
+
+class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Stateless Widget',
+    return  MaterialApp(
+      title: "Row-Col Demo",
       home: Scaffold(
-        body: Container(
-          color: Colors.pink,
-          child: Container(
-            //color: Colors.yellow,
-            //3rd
-            width: double.infinity,  
-            height: 150.0, 
-            //1st 2nd
-            padding: EdgeInsets.all(35),
-            margin: EdgeInsets.all(20),
-            //4rth
-            alignment: Alignment.bottomLeft,  
-            transform: Matrix4.rotationZ(0.1),   
-            //1st
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 4),
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [ // 2nd
-                new BoxShadow(
-                  color: Colors.green,
-                  offset: new Offset(6.0, 6.0),
-                ),
-              ],
+        body: Column(
+            //mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+            //crossAxisAlignment: CrossAxisAlignment.stretch,
+            // mainAxisSize: MainAxisSize.max,
+
+          children: <Widget>[
+            Container(
+              child: const Text('text 1'),
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(40),
+              color: Colors.green,
             ),
-            child: Text(
-              "Child1",
-              style: TextStyle(color: Colors.white, fontSize: 20),
+
+            Container(
+              child: const Text('text 2'),
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(40),
+              color: Colors.lightGreen,
             ),
-          ),
+          ],
         ),
       ),
+     
     );
   }
+
 }
