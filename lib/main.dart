@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-  home: MyApp()
-));
+void main() => runApp(MaterialApp(home: MyApp()));
 
 // class Home extends StatelessWidget {
 //   const Home({Key? key}) : super(key: key);
@@ -101,7 +99,6 @@ void main() => runApp(MaterialApp(
 //   String text = '';
 //   @override
 //   void initState() {
-    
 //     text = 'Click on this button';
 //     super.initState();
 //   }
@@ -125,10 +122,8 @@ void main() => runApp(MaterialApp(
 //                   setState(() {
 //                     text = 'You pressed Arrow Button';
 //                   });
-          
 //                 },
 //               ),
-             
 //               new IconButton(
 //                   icon: const Icon(Icons.add),
 //                   onPressed: () {
@@ -138,7 +133,6 @@ void main() => runApp(MaterialApp(
 //                       text = 'You pressed Addition Button';
 //                     });
 //                   }),
-             
 //               new IconButton(
 //                   icon: const Icon(Icons.close),
 //                   onPressed: () {
@@ -149,10 +143,10 @@ void main() => runApp(MaterialApp(
 //                   }),
 //             ],
 //           ),
-//           body: Text(text,
-//           style: TextStyle(
-//             fontSize: 32
-//           ),),
+//           body: Text(
+//             text,
+//             style: TextStyle(fontSize: 32),
+//           ),
 //         ));
 //   }
 // }
@@ -168,14 +162,14 @@ void main() => runApp(MaterialApp(
 //           child: Container(
 //             //color: Colors.yellow,
 //             //3rd
-//             width: double.infinity,  
-//             height: 150.0, 
+//             width: double.infinity,
+//             height: 150.0,
 //             //1st 2nd
 //             padding: EdgeInsets.all(35),
 //             margin: EdgeInsets.all(20),
 //             //4rth
-//             alignment: Alignment.bottomLeft,  
-//             transform: Matrix4.rotationZ(0.1),   
+//             alignment: Alignment.bottomLeft,
+//             transform: Matrix4.rotationZ(0.1),
 //             //1st
 //             decoration: BoxDecoration(
 //               border: Border.all(color: Colors.black, width: 4),
@@ -198,70 +192,23 @@ void main() => runApp(MaterialApp(
 //   }
 // }
 
-class MyApp extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return  MaterialApp(
-      title: "Row-Col Demo",
-      home: Scaffold(
-        
-body: Row(
-          mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          //mainAxisSize: MainAxisSize.max,
-children: [
-            
-            Container(
-              child: const Text('text 1'),
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(40),
-              color: Colors.green,
-            ),
-
-            Container(
-              child: const Text('text 2'),
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(40),
-              color: Colors.lightGreen,
-            ),
-
-          ],
-        ),
-      ),
-     
-    );
-  }
-}
-
-// class MyApp extends StatelessWidget{
+// class MyApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
-//     return  MaterialApp(
+//     return MaterialApp(
 //       title: "Row-Col Demo",
 //       home: Scaffold(
-//         body: Column(
-//             // mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-//             crossAxisAlignment: CrossAxisAlignment.stretch,
-//             // mainAxisSize: MainAxisSize.max,
-
-//           children: <Widget>[
-            
+//         body: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//           crossAxisAlignment: CrossAxisAlignment.stretch,
+//           //mainAxisSize: MainAxisSize.max,
+//           children: [
 //             Container(
 //               child: const Text('text 1'),
 //               padding: const EdgeInsets.all(10),
 //               margin: const EdgeInsets.all(40),
 //               color: Colors.green,
 //             ),
-           
-
-
-//             Container(
-//               child: const Text('text 1'),
-//               padding: const EdgeInsets.all(10),
-//               margin: const EdgeInsets.all(40),
-//               color: Colors.green,
-//             ),
-
 //             Container(
 //               child: const Text('text 2'),
 //               padding: const EdgeInsets.all(10),
@@ -271,8 +218,125 @@ children: [
 //           ],
 //         ),
 //       ),
-     
 //     );
 //   }
-
 // }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: "Row-Col Demo",
+//       home: Scaffold(
+//         body: Column(
+//           // mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+//           crossAxisAlignment: CrossAxisAlignment.stretch,
+//           // mainAxisSize: MainAxisSize.max,
+
+//           children: <Widget>[
+//             Container(
+//               child: const Text('text 1'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.green,
+//             ),
+//             Container(
+//               child: const Text('text 1'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.green,
+//             ),
+//             Container(
+//               child: const Text('text 2'),
+//               padding: const EdgeInsets.all(10),
+//               margin: const EdgeInsets.all(40),
+//               color: Colors.lightGreen,
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: SafeArea(
+//         top: true,
+//         child: Scaffold(
+//           body: Text(
+//             'This is an example explaining use of SafeArea',
+//             style: TextStyle(color: Colors.green, fontSize: 20),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'ClipOval',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePAGE(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class MyHomePAGE extends StatefulWidget {
+  const MyHomePAGE({Key? key}) : super(key: key);
+
+  @override
+  _MyHomePAGEState createState() => _MyHomePAGEState();
+}
+
+class _MyHomePAGEState extends State<MyHomePAGE> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Rich Text Demo'),
+        backgroundColor: Colors.green,
+      ),
+      body: Center(
+          child: RichText(
+        overflow: TextOverflow.clip,
+        textAlign: TextAlign.end,
+        textDirection: TextDirection.rtl,
+        softWrap: true,
+        maxLines: 1,
+        textScaleFactor: 1,
+        text: TextSpan(
+          text: 'Hello ',
+          style: DefaultTextStyle.of(context).style,
+          children: const <TextSpan>[
+            TextSpan(
+                text: 'World', style: TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
+      )),
+      backgroundColor: Colors.lightBlue[50],
+    );
+  }
+}
+
+class MyClip extends CustomClipper<Rect> {
+  @override
+  Rect getClip(Size size) {
+    return const Rect.fromLTWH(0, 0, 100, 100);
+  }
+
+  @override
+  bool shouldReclip(oldClipper) {
+    return false;
+  }
+}
