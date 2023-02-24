@@ -1,95 +1,117 @@
+// import 'package:flutter/material.dart';
+
+// void main() => runApp(MyApp());
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo Application',
+//       theme: ThemeData(
+//         primarySwatch: Colors.green,
+//       ),
+//       home: MyHomePage(),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   MyHomePageState createState() => new MyHomePageState();
+// }
+
+// class MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       appBar: new AppBar(
+//         title: new Text('Gestures Example'),
+//         centerTitle: true,
+//       ),
+//       body: new Center(
+//           child: GestureDetector(
+//               onTap: () {
+//                 print('Box Clicked');
+//               },
+//               child: Container(
+//                 height: 60.0,
+//                 width: 120.0,
+//                 padding: EdgeInsets.all(10.0),
+//                 decoration: BoxDecoration(
+//                   color: Colors.blueGrey,
+//                   borderRadius: BorderRadius.circular(15.0),
+//                 ),
+//                 child: Center(child: Text('Click Me')),
+//               ))),
+//     );
+//   }
+// }
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+//It is the entry point for your Flutter app.
 void main() {
-  runApp(MyApp());
+  runApp(
+    MaterialApp(
+      title: 'Multiple Gestures Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Multiple Gestures Demo'),
+        ),
+        body: DemoApp(),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class DemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyStatefulWidget(),
+    return RawGestureDetector(
+      gestures: {
+        AllowMultipleGestureRecognizer: GestureRecognizerFactoryWithHandlers<
+            AllowMultipleGestureRecognizer>(
+          () => AllowMultipleGestureRecognizer(),
+          (AllowMultipleGestureRecognizer instance) {
+            instance.onTap = () => print('It is the parent container gesture');
+          },
+        ),
+      },
+      behavior: HitTestBehavior.opaque,
+      //Parent Container
+      child: Container(
+        color: Colors.green,
+        child: Center(
+          //Now, wraps the second container in RawGestureDetector
+          child: RawGestureDetector(
+            gestures: {
+              AllowMultipleGestureRecognizer:
+                  GestureRecognizerFactoryWithHandlers<
+                      AllowMultipleGestureRecognizer>(
+                () => AllowMultipleGestureRecognizer(), //constructor
+                (AllowMultipleGestureRecognizer instance) {
+                  //initializer
+                  instance.onTap = () => print('It is the nested container');
+                },
+              )
+            },
+            //Creates the nested container within the first.
+            child: Container(
+              color: Colors.deepOrange,
+              width: 250.0,
+              height: 350.0,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
-
+class AllowMultipleGestureRecognizer extends TapGestureRecognizer {
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _count = 0;
-  int _selectedindex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home Page',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Search Page',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Profile Page',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedindex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Navigation Drawer Example'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedindex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Color.fromARGB(255, 12, 126, 219),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-            backgroundColor: Color.fromARGB(255, 12, 126, 219),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-            backgroundColor: Color.fromARGB(255, 12, 126, 219),
-          ),
-        ],
-        type: BottomNavigationBarType.shifting,
-        currentIndex: _selectedindex,
-        selectedItemColor: Colors.black,
-        iconSize: 40,
-        onTap: _onItemTapped,
-        elevation: 5,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() {
-          _count++;
-        }),
-        tooltip: 'Increment Counter',
-        child: const Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
+  void rejectGesture(int pointer) {
+    acceptGesture(pointer);
   }
 }
