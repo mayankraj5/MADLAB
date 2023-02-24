@@ -24,100 +24,72 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _count = 0;
+  int _selectedindex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Home Page',
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Search Page',
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Profile Page',
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedindex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Navigation Drawer Example'),
       ),
-      drawer: Drawer(
-        elevation: 20.0,
-        child: Column(
-          children: <Widget>[
-            const UserAccountsDrawerHeader(
-              accountName: Text("Mayank Raj"),
-              accountEmail: Text("mayankraj@siesgst.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 4, 124, 223),
-                child: Text("MR"),
-              ),
-            ),
-            ListTile(
-              title: const Text("Inbox"),
-              leading: const Icon(Icons.mail),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Mailpage()),
-                );
-              },
-            ),
-            const Divider(
-              height: 0.1,
-            ),
-            ListTile(
-              title: const Text("Primary"),
-              leading: const Icon(Icons.inbox),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Primarypage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text("Social"),
-              leading: new Icon(Icons.people),
-            ),
-            ListTile(
-              title: const Text("Promotions"),
-              leading: new Icon(Icons.local_offer),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Mailpage extends StatelessWidget {
-  const Mailpage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Mail Screen"),
-      ),
       body: Center(
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Mail Screen")),
+        child: _widgetOptions.elementAt(_selectedindex),
       ),
-    );
-  }
-}
-
-class Primarypage extends StatelessWidget {
-  const Primarypage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Primary Screen"),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Color.fromARGB(255, 12, 126, 219),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+            backgroundColor: Color.fromARGB(255, 12, 126, 219),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+            backgroundColor: Color.fromARGB(255, 12, 126, 219),
+          ),
+        ],
+        type: BottomNavigationBarType.shifting,
+        currentIndex: _selectedindex,
+        selectedItemColor: Colors.black,
+        iconSize: 40,
+        onTap: _onItemTapped,
+        elevation: 5,
       ),
-      body: Center(
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Primary Screen")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => setState(() {
+          _count++;
+        }),
+        tooltip: 'Increment Counter',
+        child: const Icon(Icons.add),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
