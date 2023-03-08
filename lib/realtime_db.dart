@@ -36,7 +36,7 @@ class _realtime_dbState extends State<realtime_db> {
                 onPressed: () {
                   _createDB();
                 },
-                child: const Text("Create DB")),
+                child: const Text("CreateDB")),
             ],
           ),
         ),
