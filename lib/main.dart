@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:expt7/realtime_db.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  runApp(MyApp());
+}
 
-  FirebaseApp firebaseApp = await Firebase.initializeApp(
-      name: "first",
-      options: const FirebaseOptions(
-          apiKey: "AIzaSyBmzfh8f_XFMy6flkL-obeFA1HeYxhuiuY",
-          authDomain: "first-109d7.firebaseapp.com",
-          projectId: "first-109d7",
-          storageBucket: "first-109d7.appspot.com",
-          messagingSenderId: "919364557544",
-          appId: "1:919364557544:web:866f58be580803458ec75d"),);
-  runApp(const MaterialApp(
-    home: realtime_db(),
-  ));
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  var size, height, width;
+
+  @override
+  Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Testing"),
+        backgroundColor: Colors.green,
+      ),
+      body: Container(
+        color: Colors.yellow,
+        height: height / 2,
+        width: width / 2,
+      ),
+    );
+  }
 }
